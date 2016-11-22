@@ -46,7 +46,7 @@
             <div class="container">
                 <div class="navbar-header">
                     <!-- Logo Starts -->
-                    <h1 style="font-size:300%;">VAPoR</h1>
+                    <h1 style="font-size:300%;">WePlan</h1>
                     <!-- #Logo Ends -->
 
                 </div>
