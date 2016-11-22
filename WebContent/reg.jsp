@@ -1,5 +1,6 @@
 <%@ page import="java.sql.*" %> 
 <%@ page import="java.io.*" %> 
+<%@ page import="takeone.*" %>
 
 <html lang="en">
 <head>
@@ -16,10 +17,10 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- bootstrap -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
 
@@ -89,7 +90,7 @@
                                     </div>
                                 </div>
                             </div>
-                                 
+                                 <fieldset>
                                 <div class="form-group">
                                     <input type="text" name="contact_person" id="contact_person" class="form-control input-lg" placeholder="Primary Contact Person" tabindex="3" required="required">
                                     
@@ -109,7 +110,7 @@
                             </div>
                             <fieldset>
                             <div class="form-group">
-								<input type="text" name="w_date" id="w_date" class="form-control input-lg" placeholder="Wedding Date" tabindex="7" required="required"/>
+								<input type="text" name="w_date" id="w_date" class="form-control input-lg" placeholder="Wedding Date (dd/mm/yyyy)" tabindex="7" required="required"/>
 							</div>
 							</fieldset>
                             <hr class="colorgraph">
@@ -123,50 +124,16 @@
                                 </div>
                             </div>                              
    <%
+   
+Register reg = new Register();
+Boolean success = reg.filldetails(request);
 
-   	String email = request.getParameter("email");    
-   	String groom_name = request.getParameter("groom_name");
-   	String bride_name = request.getParameter("bride_name");
-   	String contact_person = request.getParameter("contact_person");
-   	String user_name = request.getParameter("user_name");
-	String password = request.getParameter("password");
-	String w_date = request.getParameter("w_date");
-	
-    Connection connection = null;
-     PreparedStatement pstatement = null;
-     Class.forName("com.mysql.jdbc.Driver");
-     
-     connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/members?useSSL=false","root","passwordbaru");
-
-     
-          int updateQuery = 0;
-	                 try {
-              String queryString = ("insert into members(email, groom_name, bride_name, contact_person, user_name, password, w_date, booking_date) VALUES (?, ?, ?, ?, ?, ?, ?, CURDATE())");
-              	     
-              pstatement = connection.prepareStatement(queryString);
-              pstatement.setString(1, email);
-			  pstatement.setString(2, groom_name);
-			  pstatement.setString(3, bride_name);
-              pstatement.setString(4, contact_person);
-              pstatement.setString(5, user_name);
-              pstatement.setString(6, password);
-              pstatement.setString(7, w_date);
-              
-              updateQuery = pstatement.executeUpdate();
-                            if (updateQuery != 0) { 
+if (success) { 
 	           response.sendRedirect("welcome.jsp");
              
               }
-            } 
-            catch (Exception ex) {
-            out.println("Unable to connect to database.");
-   
-               }
-            finally {
-                // close all the connections.
-                pstatement.close();
-                connection.close();
-            }
+
+            
 	  
 	//}
 %>                         
