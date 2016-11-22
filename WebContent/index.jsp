@@ -15,10 +15,10 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <!-- bootstrap -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
 
@@ -76,18 +76,15 @@
             &nbsp;
               <img border="0" src="images/trial1.jpeg"
      			alt="Wedding Ring" width="304" height="228">
+     			<p>
+     			Welcome to the VAPoR Wedding Planner Portal. 
+				Take your wedding planning to the next level.
+				</p>
      		&nbsp;
      		&nbsp;
-<center>
-Welcome to the VAPoR Wedding Planner Portal. 
-Take your wedding planning to the next level.
-
-</center>     		
-
-            </center>
+     		</center>
         
-    </body>
+</body>
 </body>
 </html>
-
 xyz
