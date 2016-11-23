@@ -1,72 +1,78 @@
 <%@ page import="java.sql.*" %> 
 <%@ page import="java.io.*" %> 
 
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>VAPoR Wedding Planner Portal</title>
+    <meta charset="utf-8">
+    <title>Wedding Planning Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
 
-    <!-- Google fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="scripts/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="scripts/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
-    <!-- font awesome -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Icons -->
+    <link href="scripts/icons/general/stylesheets/general_foundicons.css" media="screen" rel="stylesheet" type="text/css" />  
+    <link href="scripts/icons/social/stylesheets/social_foundicons.css" media="screen" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 8]>
+        <link href="scripts/icons/general/stylesheets/general_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="scripts/icons/social/stylesheets/social_foundicons_ie7.css" media="screen" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome.min.css">
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="scripts/fontawesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link href="scripts/carousel/style.css" rel="stylesheet" type="text/css" />
+    <link href="scripts/camera/css/camera.css" rel="stylesheet" type="text/css" />
 
-    <!-- animate.css -->
-    <link rel="stylesheet" href="bootstrap/css/animate.css" />
-    <link rel="stylesheet" href="bootstrap/css/set.css" />
+    <link href="http://fonts.googleapis.com/css?family=Syncopate" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" type="text/css">
 
-    <!-- gallery -->
-    <link rel="stylesheet" href="css/blueimp-gallery.min.css">
-
-    <!-- favicon -->
-
-
-    <link rel="stylesheet" href="bootstrap/css/style.css">
-
+    <link href="styles/custom.css" rel="stylesheet" type="text/css" />
 </head>
+<body id="pageBody">
 
-<body>
-<div class="topbar animated fadeInLeftBig"></div>
+<div id="divBoxed" class="container">
 
-<!-- Header Starts -->
+    <div class="transparent-bg" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: -1;zoom: 1;"></div>
 
-    <div class="container">
-        <div class="navbar-inverse navbar-fixed-top" role="navigation" id="top-nav">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- Logo Starts -->
-                    <h1 style="font-size:300%;">VAPoR</h1>
-                    <!-- #Logo Ends -->
+    <div class="divPanel notop nobottom">
+            <div class="row-fluid">
+                <div class="span12">
+
+                    <div id="divLogo" class="pull-left">
+                        <a href="index.html" id="divSiteTitle">Forever</a><br />
+                        <a href="index.html" id="divTagLine">Your Wedding, Your Way!</a>
+                    </div>
+
+                    <div id="divMenuRight" class="pull-right">
+                    <div class="navbar">
+                        <button type="button" class="btn btn-navbar-highlight btn-large btn-primary" data-toggle="collapse" data-target=".nav-collapse">
+                            NAVIGATION <span class="icon-chevron-down icon-white"></span>
+                        </button>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav nav-pills ddmenu">
+                            <li class="active"><a href="index.jsp">Home</a></li>
+                        	<li ><a href="reg.jsp">Sign Up</a></li>
+                        	<li ><a href="log.jsp">Login</a></li>
+                        	<li> <a href="about.jsp">About</a></li>
+                            </ul>
+                            </div>
+                    </div>
+                    </div>
 
                 </div>
-
-
-                <!-- Nav Starts -->
-                  <div class="navbar-collapse  collapse">
-                       <ul class="nav navbar-nav navbar-right scroll">
-                        <li class="active"><a href="index.jsp">Home</a></li>
-                        <li ><a href="registration.jsp">Sign Up</a></li>
-                        <li ><a href="login.jsp">Login</a></li>
-                    </ul>
-                </div>
-                <!-- #Nav Ends -->
-
             </div>
-        </div>
-
-    </div>
-
-<p>
 <h2 align="left">Registration is Successful!!</h2>
-<h2 align="left">Please Login Here <a href='log.jsp'>Go to Login</a></h2>
+<h2 align="left">Please Login <a href='log.jsp'> Here </a></h2>
