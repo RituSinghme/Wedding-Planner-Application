@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*" %> 
 <%@ page import="java.io.*" %> 
-
+<%@ page import="takeone.*" %>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -80,7 +80,25 @@
 	<div class="row">
 	<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 	<form action="" method="post">
-		<h2 align="center">Enter Your Credentials
+	  
+		<h2 align="center">Enter Your Credentials </h2>
+		<%
+Login login = new Login();
+Boolean status = false;
+status = login.authenticate(request);
+String uname = request.getParameter("user_name");    
+ 
+    
+    if (status) {
+        
+        response.sendRedirect("success.jsp");
+    } else if(!status && uname!=null){ %>
+       <h3 align="center">Invalid username or password.. Please try again..!!</h3>
+       <%
+        		
+    }%>
+    
+  <h2 align="center">
 		<fieldset>
 			<div class="form-group">
 				<input type="text" name="user_name" id="username" class="form-control input-lg" placeholder="Username" tabindex="1" required="required">
@@ -100,26 +118,7 @@
              <div class="col-xs-12 col-sm-6 col-md-6"><div class="form-group"><input name="register" value="New User" class="btn btn-primary btn-block" onclick="document.location.href='reg.jsp';" tabindex="4"></div>
              </div>
          </div>
-<%
-    String user_name = request.getParameter("user_name");    
-    String password = request.getParameter("password");
-    Class.forName("com.mysql.jdbc.Driver");
-    
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/members?useSSL=false","root","passwordbaru");
-    Statement st = con.createStatement();
-    ResultSet rs;
-    rs = st.executeQuery("select * from members where user_name='" + user_name + "' and password='" + password + "'");
-    if (rs!=null && rs.next()) {
-        session.setAttribute("user_name", user_name);
-        //out.println("welcome " + userid);
-        //out.println("<a href='logout.jsp'>Log out</a>");
-        response.sendRedirect("success.jsp");
-    } 
-    else if (user_name==null){
-        out.println("Invalid username or password <a href='log.jsp'>try again</a>");
-    }
-    
-%>                            
+                        
                            
 	</form>
 	</div>
@@ -184,7 +183,7 @@
             <div class="row-fluid">
                 <div class="span12">
                     <p class="copyright">
-                        Copyright © 2016 Forever. All Rights Reserved.
+                        Copyright Â© 2016 Forever. All Rights Reserved.
                     </p>
                 </div>
             </div>
