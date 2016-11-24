@@ -85,10 +85,10 @@ public class Register extends HttpServlet{
 					pstatement.setString(3, customer_id);
 					insertQuery2 = pstatement.executeUpdate();
 
-					String query3 = ("insert into wedding(c_id,w_date) values (?,cast(w_date as DATETIME))");
+					String query3 = ("insert into wedding(c_id,w_date) values (?,?)");
 					pstatement = connection.prepareStatement(query3);
 					pstatement.setString(1, customer_id);
-					// pstatement.setString(2, sqlDate.toString());
+					pstatement.setDate(2, sqlDate);
 					insertQuery3 = pstatement.executeUpdate();
 
 					if (insertQuery3 != 0) {
