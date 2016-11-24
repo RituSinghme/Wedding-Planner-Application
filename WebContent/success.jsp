@@ -72,18 +72,110 @@
                 </div>
             </div>
 
-		<h2 align="center">Hi There!!</h2>
+		<h2 align="center">Hi There <% out.print(session.getAttribute("user_name"));%> , Welcome !!</h2>
         
             <%
    			if ((session.getAttribute("user_name") == null) || (session.getAttribute("user_name") == "")) {
 			%>
 			You are not logged in<br/>
 			<a href="index.jsp">Please Login</a>
-			<%} 
+			<%
+			 } 
    			
-   			else {
+   		else {
+   				
+   				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
+				Statement st = con.createStatement();
+				ResultSet rs;
+				out.print(session.getAttribute("customer_id"));
+				rs = st.executeQuery("select * from customer where c_id =" + session.getAttribute("customer_id"));
+				//out.print(rs);
+				Class.forName("com.mysql.jdbc.Driver");
+			
+				while(rs.next())
+				{
+					
+			%>
+		     
+				    <div align="center">
+				        <table border="1" cellpadding="5">
+				            <caption><h2>Account Information</h2></caption>
+				            <tr>
+				                <th>Groom</th>
+				                <th>Bride</th>
+				                <th>Email</th>
+				                <th>Contact Person</th>
+				                <th>Wedding Date</th>
+				            </tr>
+				            <tr>
+				                <td><% out.print(rs.getString("groom_name")); %></td>
+				                <td><% out.print(rs.getString("bride_name")); %></td>
+				                <td><% out.print(rs.getString("email")); %></td>
+				                <td><% out.print(rs.getString("contact_person")); %></td>
+				                <td>"01/01/01"</td>
+				                                            
+				            </tr>
+				        </table>
+				    </div>
+			<% } %>
+				    <br><br>
+				    <h2 align = "center"><a href="Ritu.jsp"> Choose from our Services</h2>
+				<% 
+			        ResultSet wc,gc;
+					String booked = "False";
+			        String cat,phot,ven,dec,perf;
+			        wc = st.executeQuery("select * from wedding_component where wc_id  = 1");
+			        while (wc.next())
+			        {
+			        	cat = wc.getString("cat_id");
+			        	phot = wc.getString("ph_id");
+			        	ven = wc.getString("venue_id");
+			        	dec = wc.getString("d_id");
+			        	perf = wc.getString("p_id");
+			        	
+			    %>
+				    <div align="center">
+				    <table border="1" cellpadding="5">
+				        <caption><p>Services Chosen</p></caption>
+				        <tr>
+				        <% if (cat!= null) { booked = "True"; %>
+				        	<th>Caterer</th> <% } 
+				        if (phot != null) { booked = "True";
+				        %>
+				        	<th>Photographer</th> <% }
+				        if (ven!= null) { booked = "True"; %>
+				        	<th>Venue</th> <% }
+				        if (perf != null) { booked = "True"; %>
+				        	<th>Performer</th><% }
+				        if (dec != null) { booked = "True"; %>
+			        	<th>Decorater</th><% }%>
+				        </tr>
+				        <tr>
+				        <% if (cat!= null) { %>
+				        	<td><% out.print(cat); %></td> <% } 
+				        if (phot != null) { 
+				        %>
+				        	<td><% out.print(phot); %></td> <% }
+				        if (ven!= null) { %>
+				        	<td><% out.print(ven); %></td> <% }
+				        if (perf != null) { %>
+				        	<td><% out.print(perf); %></th><% }
+				        if (dec != null) { %>
+			        	<td><% out.print(dec); %></td><% }%>
+				        </tr>
+				    </table>
+				</div>
+				
+				<% 
+			        }
+				if (booked == "True")
+				{ 				
 				%>
-			Welcome <%=session.getAttribute("user_name")%>
+				
+				<h2 align = "center"><a href="guest.jsp"> Invite guests here!</h2>
+				
+				<% } %>
+			
 			
 			<%
 			    }
@@ -147,7 +239,7 @@
             <div class="row-fluid">
                 <div class="span12">
                     <p class="copyright">
-                        Copyright © 2016 Forever. All Rights Reserved.
+                        Copyright Â© 2016 Forever. All Rights Reserved.
                     </p>
                 </div>
             </div>
