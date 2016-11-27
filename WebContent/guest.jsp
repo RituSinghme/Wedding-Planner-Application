@@ -6,6 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <META HTTP-EQUIV="Refresh" CONTENT="60">
     <title>Wedding Planning Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -65,6 +66,7 @@
                         <div class="nav-collapse collapse">
                             <ul class="nav nav-pills ddmenu">
                             <li ><a href="logout.jsp">Logout</a></li>
+                            <li ><a href="success.jsp">Back</a></li>
                             </ul>
                             </div>
                     </div>
@@ -73,63 +75,57 @@
                 </div>
             </div>
 
-		<h2 align="center">Hi There <% out.print(session.getAttribute("user_name"));%> , Welcome !!</h2>
-        
+            <h2 align="center">Hi There , Welcome !!</h2>
+            
             <%
-   			if ((session.getAttribute("user_name") == null) || (session.getAttribute("user_name") == "")) {
+   			if ((session.getAttribute("customer_id") == null) || (session.getAttribute("customer_id") == "")) {
 			%>
 			You are not logged in<br/>
 			<a href="index.jsp">Please Login</a>
 			<%
-			 } 
+			 }
    			
    		else {
    				
-   				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
-				Statement st = con.createStatement();
-				ResultSet rs;
-				out.print(session.getAttribute("customer_id"));
-				rs = st.executeQuery("select * from guest where w_id  = 1");
-				//out.print(rs);
-				Class.forName("com.mysql.jdbc.Driver");
-			
-				while(rs.next())
-				{
-					
+   			Class.forName("com.mysql.jdbc.Driver");
+   			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
+			Statement st = con.createStatement();
+			Statement st2 = con.createStatement();
+			ResultSet rs,ts;
+			int total=0;
+			rs = st.executeQuery("select * from guest where w_id =" + (Integer)session.getAttribute("wedding_id"));
+			ts = st2.executeQuery("select sum(total_count) as 'Total' from guest where w_id =" + (Integer)session.getAttribute("wedding_id"));
+			if (ts.next()){total =ts.getInt("Total");}
 			%>
-			<div align="center">
-	        <table border="1" cellpadding="5">
-	            <caption><h2>Guests Selected</h2></caption>
-	            <tr>
-	                <th>Guest</th>
-	                <th>Email ID</th>
-	                <th>Contact Number</th>
-	                <th>Count</th>
-	            </tr>
-	            <tr>
-	                <td><% out.print(rs.getString("g_name")); %></td>
-	                <td><% out.print(rs.getString("email_id")); %></td>
-	                <td><% out.print(rs.getString("contact_no")); %></td>
-	                <td><% out.print(rs.getString("total_count")); %></td>
-	                
-	                                            
-	            </tr>
-	        </table>
-	        </div>
-	    		<% } %>
+			
+			
 			<div id="signup"  class="container spacer about">
-				<div class="row">
-					<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-					<form action="" method="post">
+			<div class="row">
+				<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+					<form action ="">	
 						<br>
 						<h2 align="center">Invite your Family and Friends</h2>
 						<h2 align="center">
-								                	
+						<div class="row">
+		                	<div class="col-xs-4 col-sm-4 col-md-4"><div class="form-group"><input type="submit" name="ADD" value="ADD" class="btn btn-primary btn-block" onclick =
+		                        	<%
+		                        	
+		        					guest g = new guest();
+		        					Boolean status = false;
+		        					status = g.filldetails(request);   
+		        					out.print(status); 
+		        					%>                   	
+		                        		></div>
+		                    </div>
+		                </div> 
+		                <%if (status) { %> <p align = "center">"Successfully added"</p><% } %>
+		                
+						
 		                 <div class="form-group">
 		                    	<input type="text" name="guest_name" id="guest_name" class="form-control input-lg" placeholder="Guest Name" tabindex="1" required="required" >
 		                 </div>
 		                                
-		               	<div class="form-group">
+		               	 <div class="form-group">
 		                    	<input type="text" name="contact_no" id="contact_no" class="form-control input-lg" placeholder="Contact Number" tabindex="2" required="required">
 		                 </div>
 		                                                 
@@ -140,43 +136,46 @@
 		                            
 		             
 		                <div class="form-group">
-								<input type="text" name="count" id="count" class="form-control input-lg" placeholder="Count of people" tabindex="4" required="required"/>
+								<input type="number" min="1" step="1" name="count" id="count" class="form-control input-lg" placeholder="Count of people" tabindex="4" required="required"/>
 						</div>
-						
-						<fieldset disabled>	
-							<div class="form-group">
-			                 	<input type="text" id="wedding_id" class="form-control input-lg" placeholder= 1 tabindex="5">
-			               	</div>
-	                    </fieldset>
-		                            
-		                <hr class="colorgraph">
-		            
-		                <div class="row">
-		                        <div class="col-xs-6 col-sm-6 col-md-6"> <div class="form-group"><input type="submit" name="ADD" value="Create User" class="btn btn-primary btn-block" tabindex="6"></div>
-		                        </div>
-		                  
-		                </div>                              
-		                <%
-		   
-							guest reg = new guest();
-							Boolean success = reg.filldetails(request);
-							if (success) { 
-								           response.sendRedirect("guest.jsp");
-							             
-							              }
-		                %>                         
+					</form>
+			    </div>
+		   </div>
+	  </div>  
+	  <% if (total != 0){ %>
+	  <div align="center" id = 1>
+	        
+			<table border="1" cellpadding="5">
+	            <caption><h2>Guests Total :<% out.print(total); %></h2></caption>
+	            <tr>
+	            	<th>Select</th>
+	                <th>Guest</th>
+	                <th>Email ID</th>
+	                <th>Contact Number</th>
+	                <th>Count</th>
+	            </tr>
+	        <%    
+			while(rs.next())
+			{
+					
+			%>
+			    <tr align = "center">
+			       	<TD> <a href="guestud.jsp?id=<%=rs.getString("g_id") %>">Delete</a> </TD>
+	                <td><% out.print(rs.getString("g_name")); %></td>
+	                <td id ="em"><% out.print(rs.getString("email_id")); %></td>
+	                <td><% out.print(rs.getString("contact_no")); %></td>
+	                <td><% out.print(rs.getString("total_count")); %></td>
+	             </tr>
+	            <% } %>
+	        </table>
+	  </div>
+<% con.close();}} %>	    		
+			
+<!--End Main Content-->
+      </div>
+      		<div id="footerInnerSeparator"></div>
+      </div>
 
-				    </form>
-				    </div>
-			   </div>
-		  </div>  
-          <!--End Main Content-->
-            </div>
-
-            <div id="footerInnerSeparator"></div>
-        </div>
-    </div>
-    <% } %>
     <div id="footerOuterSeparator"></div>
 
     <div id="divFooter" class="footerArea">
@@ -223,7 +222,7 @@
                     </li>
                     </ul>
 
-                </div>
+                 </div>
             </div>
 
             <div class="row-fluid">
@@ -236,7 +235,7 @@
 
         </div>
     </div>
-</div>
+
 <br /><br />
 
 <script src="scripts/jquery.min.js" type="text/javascript"></script> 
