@@ -1,10 +1,15 @@
 package layout;
 import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-
-import javax.servlet.http.HttpServlet;  
-import javax.servlet.http.HttpServletRequest;  
- 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.sql.*; 
@@ -24,42 +29,37 @@ public class guest extends HttpServlet{
 		   	String contact_no = request.getParameter("contact_no");
 		   	String email = request.getParameter("email");
 		   	String count = request.getParameter("count");
-		   	String w_id = request.getParameter("wedding_id");
+		   	Integer wedding_id =(Integer)session.getAttribute("wedding_id"); 
 		   
-			Connection connection = null;
+	         
 		    PreparedStatement pstatement = null;
 		    int insertQuery1 = 0;
-		         
+		      
 			try {
 			     Class.forName("com.mysql.jdbc.Driver");
 			     	     
-			     connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Wedding_Planner?useSSL=false","root","Chetu1234");
+			     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root","Chetu1234");
 		         String queryString = ("insert into guest(g_name,contact_no,email_id,total_count,w_id) VALUES (?, ?, ?, ?,?)");
-		              	     
+		            	     
 		         pstatement = connection.prepareStatement(queryString);
 		         pstatement.setString(1, g_name);
 		         pstatement.setString(2, contact_no);
-				     pstatement.setString(3, email);
+				 pstatement.setString(3, email);
 		         pstatement.setString(4, count);
-		         pstatement.setString(5, w_id);
-		                     
+		         pstatement.setLong(5, wedding_id);
+		         
 		         insertQuery1 = pstatement.executeUpdate();
 		         pstatement = null;
 		         
-		         if (insertQuery1 != 0 ){success = true;}
-
+		         if (insertQuery1 != 0 ){success = true; }
+		         connection.close();
 			      }         
-			       catch (Exception ex) {System.out.println("Unable to connect to database.");}
-		           finally {
-		                // close all the connections.
-		            		try{
-		            			//pstatement.close();
-		            			connection.close();
-		            			}
-		            		catch(SQLException e){ System.out.println(e); }
-		           			}
+			       catch (Exception ex) {System.out.println("Unable to connect to database inside java.");}
+		           
 			
-			return success;
-	}
+		    return success;
 	
+		}
+		
 }
+
