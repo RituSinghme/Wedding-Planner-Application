@@ -72,10 +72,10 @@
                 </div>
             </div>
 
-		<h2 align="center">Hi There <% out.print(session.getAttribute("user_name"));%> , Welcome !!</h2>
+		<h2 align="center">Hi There, Welcome !!</h2>
         
             <%
-   			if ((session.getAttribute("user_name") == null) || (session.getAttribute("user_name") == "")) {
+   			if ((session.getAttribute("customer_id") == null) || (session.getAttribute("customer_id") == "")) {
 			%>
 			You are not logged in<br/>
 			<a href="index.jsp">Please Login</a>
@@ -87,15 +87,14 @@
    				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
 				Statement st = con.createStatement();
 				ResultSet rs;
-				out.print(session.getAttribute("customer_id"));
+				
 				rs = st.executeQuery("select * from customer where c_id =" + session.getAttribute("customer_id"));
-				//out.print(rs);
 				Class.forName("com.mysql.jdbc.Driver");
 			
 				while(rs.next())
 				{
 					
-			%>
+					%>
 		     
 				    <div align="center">
 				        <table border="1" cellpadding="5">
@@ -112,19 +111,22 @@
 				                <td><% out.print(rs.getString("bride_name")); %></td>
 				                <td><% out.print(rs.getString("email")); %></td>
 				                <td><% out.print(rs.getString("contact_person")); %></td>
-				                <td>"01/01/01"</td>
+				                <td><% out.print(session.getAttribute("wedding_date")); %></td>
 				                                            
 				            </tr>
 				        </table>
 				    </div>
-			<% } %>
 				    <br><br>
-				    <h2 align = "center"><a href="Ritu.jsp"> Choose from our Services</h2>
-				<% 
-			        ResultSet wc,gc;
+				    <h2 align = "center"><a href="Ritu.jsp"> Choose from our Services</a></h2>
+				<% }
+				
+			        ResultSet wc=null,gc=null,ph=null,ve=null,p=null,ca=null,de=null;
+					Statement sc = con.createStatement();
+					
 					String booked = "False";
-			        String cat,phot,ven,dec,perf;
-			        wc = st.executeQuery("select * from wedding_component where wc_id  = 1");
+			        String cat=null,phot=null,ven=null,dec=null,perf=null;
+			        wc = sc.executeQuery("select * from wedding_component where wc_id  = "+ session.getAttribute("wc_id"));
+			       
 			        while (wc.next())
 			        {
 			        	cat = wc.getString("cat_id");
@@ -132,60 +134,170 @@
 			        	ven = wc.getString("venue_id");
 			        	dec = wc.getString("d_id");
 			        	perf = wc.getString("p_id");
+			        }	
+			        	Statement sde= null;
+			        	Statement sve= null;
+			        	Statement sca=null;
+			        	Statement sp=null;
+			        	Statement sph=null;
 			        	
-			    %>
-				    <div align="center">
-				    <table border="1" cellpadding="5">
-				        <caption><p>Services Chosen</p></caption>
-				        <tr>
-				        <% if (cat!= null) { booked = "True"; %>
-				        	<th>Caterer</th> <% } 
-				        if (phot != null) { booked = "True";
-				        %>
-				        	<th>Photographer</th> <% }
-				        if (ven!= null) { booked = "True"; %>
-				        	<th>Venue</th> <% }
-				        if (perf != null) { booked = "True"; %>
-				        	<th>Performer</th><% }
-				        if (dec != null) { booked = "True"; %>
-			        	<th>Decorater</th><% }%>
-				        </tr>
-				        <tr>
-				        <% if (cat!= null) { %>
-				        	<td><% out.print(cat); %></td> <% } 
-				        if (phot != null) { 
-				        %>
-				        	<td><% out.print(phot); %></td> <% }
-				        if (ven!= null) { %>
-				        	<td><% out.print(ven); %></td> <% }
-				        if (perf != null) { %>
-				        	<td><% out.print(perf); %></th><% }
-				        if (dec != null) { %>
-			        	<td><% out.print(dec); %></td><% }%>
-				        </tr>
-				    </table>
-				</div>
-				
-				<% 
-			        }
-				if (booked == "True")
-				{ 				
-				%>
+			        	if (phot!= null){
+			        		booked = "True";
+				        	sph = con.createStatement();
+				        	ph = sph.executeQuery("select * from photographer where ph_id = " + phot);
+				        	}
+			        	if (perf!= null){
+			        		booked = "True";
+			        		sp = con.createStatement();
+				        	p = sp.executeQuery("select * from performer where p_id = " + perf);
+				        	}
+			        	if (cat!= null){
+			        		booked = "True";
+			        		sca = con.createStatement();
+				        	ca= sca.executeQuery("select * from caterer where cat_id = " + cat);
+				        	}
+			        	if (ven!= null){
+			        		booked = "True";
+			        		sve = con.createStatement();
+				        	ve = sve.executeQuery("select * from venue where venue_id = " + ven);
+				        	}
+			        	if (dec!= null){
+			        		booked = "True";
+			        		sde = con.createStatement();
+				        	de = sde.executeQuery("select * from decorator where d_id = " + dec);
+				        	}
+			        
+			        if (booked =="True")
+			        {
+			 		%>			 		 
+						    <div align="center">
+						    <table border="1" cellpadding="5">
+						        <caption><h2>Selection Made</h2></caption>
+							        <tr>
+							        	<th>Service</th>
+							        	<th>Web address</th>
+							        	<th>Manager</th>
+						        		<th>Manager email id</th>
+						        		<th>Manager contact_no</th>
+						        		<th>Service cost</th>
+							        </tr>
+						       
+						        <% if (cat!= null) { ca.next();%>
+							        <tr>	
+							            <td>Caterer</td>
+							           	<td><a href=<% out.print(ca.getString("web_address"));%>>
+							        		<% out.print(ca.getString("web_address"));%></a>
+							        	</td>
+							        	<td>
+						        			<% out.print(ca.getString("mgr_name"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(ca.getString("mgr_email_id"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(ca.getString("contact_no"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(ca.getString("cost"));%>
+						        		</td>
+						        	</tr>
+					        					<% }
+						        if (phot != null) { ph.next();%>
+							        <tr>
+							        	<td>Photographer</td>
+							           	<td><a href = <% out.print(ph.getString("web_address"));%>>
+							        		<% out.print(ph.getString("web_address"));%></a>
+							        	</td>
+							        	<td>
+						        			<% out.print(ph.getString("mgr_name"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(ph.getString("mgr_email_id"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(ph.getString("contact_no"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(ph.getString("cost"));%>
+						        		</td>
+						        	</tr>
+						        				<% }
+						        if (ven!= null) { ve.next(); %>
+							        <tr>
+							        	<td>Venue</td>
+							        	<td><a href = <% out.print(ve.getString("web_address"));%>>
+							        		<% out.print(ve.getString("web_address"));%></a>
+							        	</td>
+							        	<td>
+						        			<% out.print(ve.getString("mgr_name"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(ve.getString("mgr_email_id"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(ve.getString("contact_no"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(ve.getString("cost"));%>
+						        		</td>
+						        	</tr>
+					        				<% }
+						        
+						        if (perf != null) { p.next();%>
+								    <tr>
+							        	<td>Performer</td>
+							        	<td><a href =<% out.print(p.getString("web_address"));%> >
+							        		<% out.print(p.getString("web_address"));%></a>
+							        	</td>
+							        	<td>
+						        			<% out.print(p.getString("mgr_name"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(p.getString("mgr_email_id"));%>
+						        		</td>   
+						        		<td>
+						        			<% out.print(p.getString("contact_no"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(p.getString("cost"));%>
+						        		</td>
+						        	</tr>
+					        					<% }
+						        if (dec != null) { de.next();%>
+								    <tr>
+							        	<td>Decorator</td>
+							        	<td><a href = <% out.print(de.getString("web_address"));%>>
+							        		<% out.print(de.getString("web_address"));%></a>
+							        	</td>
+							        	<td>
+						        			<% out.print(de.getString("mgr_name"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(de.getString("mgr_email_id"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(de.getString("contact_no"));%>
+						        		</td>
+						        		<td>
+						        			<% out.print(de.getString("cost"));%>
+						        		</td>
+						        	</tr>
+					        					<% } %>
+							    </table>
+							</div>
 				
 				<h2 align = "center"><a href="guest.jsp"> Invite guests here!</h2>
 				
-				<% } %>
-			
-			
-			<%
-			    }
+				<%  }
+   		
+			con.close();	
+            }
 			%>
-            <!--End Main Content-->
-            </div>
-
-            <div id="footerInnerSeparator"></div>
-        </div>
+<!--End Main Content-->
     </div>
+    	<div id="footerInnerSeparator"></div>
+    </div>
+
 
     <div id="footerOuterSeparator"></div>
 
