@@ -20,6 +20,7 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession();
 		String user_name = request.getParameter("user_name");
 		String password = request.getParameter("password");
+		//String abc = session.getAttribute("customer_id").toString();
 		PreparedStatement pstatement = null;
 		ResultSet rs;
 		int c_id,w_id, wc_id = 0;
