@@ -35,6 +35,7 @@ public class Register extends HttpServlet{
 	     	        
 		if (email != null && email.length() != 0) {
 			
+						
 			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
 			String dateInString = w_date;
 			Date date = null;
@@ -59,6 +60,16 @@ public class Register extends HttpServlet{
 
 				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Wedding_Planner?useSSL=false",
 						"root", "anu123");
+				
+				String query0 = ("select * from customer where email = '" + email +"'");
+				pstatement = connection.prepareStatement(query0);
+				ResultSet rs0 = pstatement.executeQuery();
+				if(rs0!=null && rs0.next())
+				{
+					request.setAttribute("err_msg", "Email id already registered..Please Login..!!");
+					return false;
+				}
+				
 				String queryString = ("insert into customer(email, groom_name, bride_name, contact_person, w_date, booking_date) VALUES (?, ?, ?, ?,?, CURDATE())");
 
 				pstatement = connection.prepareStatement(queryString);
