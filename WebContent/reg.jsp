@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*" %> 
 <%@ page import="java.io.*" %>
-<%@ page import="layout.*" %> 
+<%@ page import="takeone.*" %>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -77,14 +77,25 @@
                 </div>
             </div>
             
-<div id="signup"  class="container spacer about">
+<div id="signup"  class="container spacer about" align="center">
 	<div class="row">
 	<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 		<form action="" method="post">
 			<br>
 			<h2 align="center">Welcome to the Wedding Planner Portal!!</h2>
-			<h2 align="center">
-                	<div class="form-group">
+			
+			<%
+			Register reg = new Register();
+   			Boolean success = reg.filldetails(request);
+   				if(request.getAttribute("err_msg")!=null && request.getAttribute("err_msg").toString().length()!=0)
+   				{
+   					%>
+   					
+   					<h3>Email id already registered..Please Login..!!</h3>
+   					<%	
+   				session.removeAttribute("err_msg");	
+   				}	%>
+                	<div class="form-group" >
                 		<input type="text" name="groom_name" id="groom_name" class="form-control input-lg" placeholder="Groom Name" tabindex="1" required="required">
                 	</div>
                 	
@@ -133,15 +144,16 @@
                   	<div class="col-xs-12 col-sm-6 col-md-6"><div class="form-group"><input name="register" value="Sign in" class="btn btn-primary btn-block" onclick="document.location.href='log.jsp';" tabindex="10"></div>
                     </div>
                 </div>                              
-   <%
    
-Register reg = new Register();
-Boolean success = reg.filldetails(request);
-if (success) { 
-	           response.sendRedirect("welcome.jsp");
-             
-              }
-            
+   
+   
+	   <%
+
+	   if (success) { 
+   	           response.sendRedirect("welcome.jsp");
+                
+                 }
+
 	  
 	//}
 %>                         
@@ -155,7 +167,7 @@ if (success) {
 
             <div id="footerInnerSeparator"></div>
         </div>
-    </div>
+   
 
     <div id="footerOuterSeparator"></div>
 
@@ -209,14 +221,14 @@ if (success) {
             <div class="row-fluid">
                 <div class="span12">
                     <p class="copyright">
-                        Copyright © 2016 Forever. All Rights Reserved.
+                        Copyright Â© 2016 Forever. All Rights Reserved.
                     </p>
                 </div>
             </div>
 
         </div>
     </div>
-</div>
+
 <br /><br />
 
 <script src="scripts/jquery.min.js" type="text/javascript"></script> 
