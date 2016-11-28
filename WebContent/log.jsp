@@ -110,6 +110,7 @@ String uname = request.getParameter("user_name");
 				<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="2" required="required">
 			</div>
 		</h2>
+		<h4 align="center">Event Organizer ? <a href="eo_login.jsp">Please Click Here</a></h4>
                            
 		<hr class="colorgraph">
 		<div class="row">
@@ -129,7 +130,7 @@ String uname = request.getParameter("user_name");
 
             <div id="footerInnerSeparator"></div>
         </div>
-    </div>
+    
 
     <div id="footerOuterSeparator"></div>
 
@@ -190,7 +191,7 @@ String uname = request.getParameter("user_name");
 
         </div>
     </div>
-</div>
+
 <br /><br />
 
 <script src="scripts/jquery.min.js" type="text/javascript"></script> 
