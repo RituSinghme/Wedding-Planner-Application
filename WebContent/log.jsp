@@ -1,18 +1,7 @@
 <%@ page import="java.sql.*" %> 
 <%@ page import="java.io.*" %> 
-<<<<<<< Updated upstream
-<%@ page import="takeone.*" %>
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
 <%@ page import="layout.*" %>
-=======
-<%@ page import="takeone.*" %>
->>>>>>> origin/master
-=======
-<%@ page import="takeone.*" %>
->>>>>>> origin/master
->>>>>>> Stashed changes
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -64,8 +53,8 @@
                 <div class="span12">
 
                     <div id="divLogo" class="pull-left">
-                        <a href="index.html" id="divSiteTitle">Forever</a><br />
-                        <a href="index.html" id="divTagLine">Your Wedding, Your Way!</a>
+                        <a href="index.jsp" id="divSiteTitle">Forever</a><br />
+                        <a href="index.jsp" id="divTagLine">Your Wedding, Your Way!</a>
                     </div>
 
                     <div id="divMenuRight" class="pull-right">

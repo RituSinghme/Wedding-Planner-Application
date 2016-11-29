@@ -31,19 +31,8 @@ public class guest extends HttpServlet{
 			try {
 			     Class.forName("com.mysql.jdbc.Driver");
 			     	     
-<<<<<<< Updated upstream
-			     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root","Chetu1234");
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
 			     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Wedding_Planner?useSSL=false","root","passwordbaru");
-=======
-			     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root","Chetu1234");
->>>>>>> origin/master
-=======
-			     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root","Chetu1234");
->>>>>>> origin/master
->>>>>>> Stashed changes
+
 		         String queryString = ("insert into guest(g_name,contact_no,email_id,total_count,w_id) VALUES (?, ?, ?, ?,?)");
 		            	     
 		         pstatement = connection.prepareStatement(queryString);
@@ -65,20 +54,4 @@ public class guest extends HttpServlet{
 		    return success;
 	
 		}
-		
-<<<<<<< Updated upstream
 }
-
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
-=======
-}
-
->>>>>>> origin/master
-=======
-}
-
->>>>>>> origin/master
->>>>>>> Stashed changes

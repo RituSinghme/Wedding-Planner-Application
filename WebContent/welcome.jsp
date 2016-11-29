@@ -52,8 +52,8 @@
                 <div class="span12">
 
                     <div id="divLogo" class="pull-left">
-                        <a href="index.html" id="divSiteTitle">Forever</a><br />
-                        <a href="index.html" id="divTagLine">Your Wedding, Your Way!</a>
+                        <a href="index.jsp" id="divSiteTitle">Forever</a><br />
+                        <a href="index.jsp" id="divTagLine">Your Wedding, Your Way!</a>
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
@@ -64,7 +64,6 @@
                         <div class="nav-collapse collapse">
                             <ul class="nav nav-pills ddmenu">
                             <li class="active"><a href="index.jsp">Home</a></li>
-                        	<li ><a href="reg.jsp">Sign Up</a></li>
                         	<li ><a href="log.jsp">Login</a></li>
                         	<li> <a href="about.jsp">About</a></li>
                             </ul>

@@ -54,8 +54,8 @@
                 <div class="span12">
 
                     <div id="divLogo" class="pull-left">
-                        <a href="index.html" id="divSiteTitle">Forever</a><br />
-                        <a href="index.html" id="divTagLine">Your Wedding, Your Way!</a>
+                        <a href="index.jsp" id="divSiteTitle">Forever</a><br />
+                        <a href="index.jsp" id="divTagLine">Your Wedding, Your Way!</a>
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
@@ -88,19 +88,9 @@
    		else {
    				
    			Class.forName("com.mysql.jdbc.Driver");
-<<<<<<< Updated upstream
-   			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
+
    			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "passwordbaru");
-=======
-   			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
->>>>>>> origin/master
-=======
-   			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
->>>>>>> origin/master
->>>>>>> Stashed changes
+
 			Statement st = con.createStatement();
 			Statement st2 = con.createStatement();
 			ResultSet rs,ts;
@@ -119,19 +109,9 @@
 						<h2 align="center">Invite your Family and Friends</h2>
 						<h2 align="center">
 						<div class="row">
-<<<<<<< Updated upstream
-		                	<div class="col-xs-4 col-sm-4 col-md-4"><div class="form-group"><input type="submit" name="ADD" value="ADD" class="btn btn-primary btn-block" onclick =
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 		                	<div class="col-xs-4 col-sm-4 col-md-4"><div class="form-group"><input type="submit" name="ADD" value="ADD" class="btn btn-primary btn-medium" onclick =
-=======
-		                	<div class="col-xs-4 col-sm-4 col-md-4"><div class="form-group"><input type="submit" name="ADD" value="ADD" class="btn btn-primary btn-block" onclick =
->>>>>>> origin/master
-=======
-		                	<div class="col-xs-4 col-sm-4 col-md-4"><div class="form-group"><input type="submit" name="ADD" value="ADD" class="btn btn-primary btn-block" onclick =
->>>>>>> origin/master
->>>>>>> Stashed changes
+
 		                        	<%
 		                        	
 		        					guest g = new guest();
@@ -252,19 +232,8 @@
             <div class="row-fluid">
                 <div class="span12">
                     <p class="copyright">
-<<<<<<< Updated upstream
                         Copyright © 2016 Forever. All Rights Reserved.
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        Copyright � 2016 Forever. All Rights Reserved.
-=======
-                        Copyright © 2016 Forever. All Rights Reserved.
->>>>>>> origin/master
-=======
-                        Copyright © 2016 Forever. All Rights Reserved.
->>>>>>> origin/master
->>>>>>> Stashed changes
+
                     </p>
                 </div>
             </div>
@@ -285,16 +254,5 @@
 
 
 </body>
-<<<<<<< Updated upstream
 </html>
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-</html>
-=======
-</html>
->>>>>>> origin/master
-=======
-</html>
->>>>>>> origin/master
->>>>>>> Stashed changes
+

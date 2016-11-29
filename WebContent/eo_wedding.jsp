@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*" %> 
 <%@ page import="java.io.*" %> 
-<%@ page import="takeone.*" %>
+<%@ page import="layout.*" %>
 <%@ page import = "java.util.*" %>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -54,8 +54,8 @@
                 <div class="span12">
 
                     <div id="divLogo" class="pull-left">
-                        <a href="index.html" id="divSiteTitle">Forever</a><br />
-                        <a href="index.html" id="divTagLine">Your Wedding, Your Way!</a>
+                        <a href="index.jsp" id="divSiteTitle">Forever</a><br />
+                        <a href="index.jsp" id="divTagLine">Your Wedding, Your Way!</a>
                     </div>
                     <div id="divMenuRight" class="pull-right">
                     
