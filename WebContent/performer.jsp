@@ -87,7 +87,7 @@
 %>
 
 <div align="center" class="container">
-    <caption><h3>Please choose a Decorator !!</h3></caption> <br>  
+    <caption><h3>Please choose a Performer !!</h3></caption> <br>  
     
  <table class="table table-bordered" >
     <thead>
@@ -110,14 +110,14 @@ Statement st = con.createStatement();
 ResultSet od;
 ResultSet rs;
 
-od = st.executeQuery("select d_id from wedding_component a inner join wedding b on a.w_id = b.w_id where d_id is not null and w_date ='" + session.getAttribute("wedding_date").toString()+ "'");
+od = st.executeQuery("select p_id from wedding_component a inner join wedding b on a.w_id = b.w_id where p_id is not null and w_date ='" + session.getAttribute("wedding_date").toString()+ "'");
 //out.println(od.next());
 
 if (od.next() == false)
 { //out.println(od.next());
 { 
 Statement uv = con.createStatement();
-rs = uv.executeQuery("select * from decorator");  
+rs = uv.executeQuery("select * from performer");  
 
 while(rs.next())
  {
@@ -130,13 +130,13 @@ while(rs.next())
            <tr>
                <td width="5%">
                <div class="radio">
-                     <label><input type="radio" id='newbooking' name="optradio" onclick="document.location.href='de_update.jsp?id=<%=rs.getString("d_id") %>'">
+                     <label><input type="radio" id='newbooking' name="optradio" onclick="document.location.href='pf_update.jsp?id=<%=rs.getString("p_id") %>'">
                    
                      </label> 
                 
                  </div>
                </td>
-             <td width="5%"><% out.print(rs.getString("d_id")); %></td>
+             <td width="5%"><% out.print(rs.getString("p_id")); %></td>
                <td width="27%"><a href= <% out.print(rs.getString("web_address"));%>><% out.print(rs.getString("web_address")); %></a></td>
                <td width="15%"><% out.print(rs.getString("mgr_name")); %></td>
                <td width="23%"><% out.print(rs.getString("mgr_email_id")); %></td>
@@ -156,13 +156,13 @@ else{
 	String ph = "(";
 do
 { //out.println(od.next());
-	ph_id = (od.getInt("d_id"));
+	ph_id = (od.getInt("p_id"));
 	ph = ph + ph_id + ",";
 	}while(od.next());
 ph = ph + ph_id+ ")";
 
 Statement uv = con.createStatement();
-rs = uv.executeQuery("select * from decorator where d_id not in " + ph ); 
+rs = uv.executeQuery("select * from performer where p_id not in " + ph ); 
 while(rs.next())
 { 
 
@@ -174,13 +174,13 @@ while(rs.next())
            <tr>
                <td width="5%">
                <div class="radio">
-                     <label><input type="radio" id='prevbooking' name="optradio" onclick="document.location.href='de_update.jsp?id=<%=rs.getString("d_id") %>'">
+                     <label><input type="radio" id='prevbooking' name="optradio" onclick="document.location.href='pf_update.jsp?id=<%=rs.getString("p_id") %>'">
                    
                      </label> 
                 
                  </div>
                </td>
-             <td width="5%"><% out.print(rs.getString("d_id")); %></td>
+             <td width="5%"><% out.print(rs.getString("p_id")); %></td>
                <td width="27%"><a href= <% out.print(rs.getString("web_address"));%>><% out.print(rs.getString("web_address")); %></a></td>
                <td width="15%"><% out.print(rs.getString("mgr_name")); %></td>
                <td width="23%"><% out.print(rs.getString("mgr_email_id")); %></td>
@@ -217,8 +217,8 @@ while(rs.next())
 %>
 
 <div class="btn-group btn-group-justified" align ="center">
-    <a href="photographer.jsp?id=ph_id" class="btn btn-primary btn-lg">Back</a>
-    <a href="performer.jsp?id=ph_id" class="btn btn-primary btn-lg">Skip & Next</a>
+    <a href="decorator.jsp?id=ph_id" class="btn btn-primary btn-lg">Back</a>
+    <a href="caterer.jsp?id=ph_id" class="btn btn-primary btn-lg">Skip & Next</a>
   </div>
   
 <br>

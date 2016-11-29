@@ -87,16 +87,18 @@
 %>
 
 <div align="center" class="container">
-    <caption><h3>Please choose a Decorator !!</h3></caption> <br>  
+    <caption><h3>Please choose a venue !!</h3></caption> <br>  
     
  <table class="table table-bordered" >
     <thead>
     <tr>
          <th align="center" width="5%"></th>                         
         <th align="center" width="5%">Id</th>
-        <th align="center" width="27%">Web Address</th>
-        <th align="center"width="15%">Manager's Name</th>
-        <th align="center" width="23%">Manager's Email Id</th>
+        <th align="center" width="17%">Web Address</th>
+        <th align="center" width="10%">Address</th>
+        <th align="center" width="8%">Capacity</th>
+        <th align="center"width="10%">Manager's Name</th>
+        <th align="center" width="10%">Manager's Email Id</th>
         <th align="center" width="10%">Cost</th>
         <th align="center" width="15%">Contact Number</th>
     </tr>
@@ -110,14 +112,15 @@ Statement st = con.createStatement();
 ResultSet od;
 ResultSet rs;
 
-od = st.executeQuery("select d_id from wedding_component a inner join wedding b on a.w_id = b.w_id where d_id is not null and w_date ='" + session.getAttribute("wedding_date").toString()+ "'");
+od = st.executeQuery("select venue_id from wedding_component a inner join wedding b on a.w_id = b.w_id where venue_id is not null and w_date ='" + session.getAttribute("wedding_date").toString()+ "'");
 //out.println(od.next());
+
 
 if (od.next() == false)
 { //out.println(od.next());
 { 
 Statement uv = con.createStatement();
-rs = uv.executeQuery("select * from decorator");  
+rs = uv.executeQuery("select * from venue");  
 
 while(rs.next())
  {
@@ -130,16 +133,18 @@ while(rs.next())
            <tr>
                <td width="5%">
                <div class="radio">
-                     <label><input type="radio" id='newbooking' name="optradio" onclick="document.location.href='de_update.jsp?id=<%=rs.getString("d_id") %>'">
+                     <label><input type="radio" id='newbooking' name="optradio" onclick="document.location.href='ve_update.jsp?id=<%=rs.getString("venue_id") %>'">
                    
                      </label> 
                 
                  </div>
                </td>
-             <td width="5%"><% out.print(rs.getString("d_id")); %></td>
-               <td width="27%"><a href= <% out.print(rs.getString("web_address"));%>><% out.print(rs.getString("web_address")); %></a></td>
-               <td width="15%"><% out.print(rs.getString("mgr_name")); %></td>
-               <td width="23%"><% out.print(rs.getString("mgr_email_id")); %></td>
+             <td width="5%"><% out.print(rs.getString("venue_id")); %></td>
+               <td width="17%"><a href= <% out.print(rs.getString("web_address"));%>><% out.print(rs.getString("web_address")); %></a></td>
+               <td width="10%"><% out.print(rs.getString("address")); %></td>
+               <td width="8%"><% out.print(rs.getString("capacity")); %></td>
+               <td width="10%"><% out.print(rs.getString("mgr_name")); %></td>
+               <td width="20%"><% out.print(rs.getString("mgr_email_id")); %></td>
                <td width="10%"><% out.print(rs.getString("cost")); %></td>
                <td width="15%"><% out.print(rs.getString("contact_no")); %></td>
                               
@@ -156,13 +161,14 @@ else{
 	String ph = "(";
 do
 { //out.println(od.next());
-	ph_id = (od.getInt("d_id"));
+	ph_id = (od.getInt("venue_id"));
 	ph = ph + ph_id + ",";
 	}while(od.next());
 ph = ph + ph_id+ ")";
 
 Statement uv = con.createStatement();
-rs = uv.executeQuery("select * from decorator where d_id not in " + ph ); 
+rs = uv.executeQuery("select * from venue where venue_id not in " + ph ); 
+
 while(rs.next())
 { 
 
@@ -174,16 +180,18 @@ while(rs.next())
            <tr>
                <td width="5%">
                <div class="radio">
-                     <label><input type="radio" id='prevbooking' name="optradio" onclick="document.location.href='de_update.jsp?id=<%=rs.getString("d_id") %>'">
+                     <label><input type="radio" id='prevbooking' name="optradio" onclick="document.location.href='ve_update.jsp?id=<%=rs.getString("venue_id") %>'">
                    
                      </label> 
                 
                  </div>
                </td>
-             <td width="5%"><% out.print(rs.getString("d_id")); %></td>
-               <td width="27%"><a href= <% out.print(rs.getString("web_address"));%>><% out.print(rs.getString("web_address")); %></a></td>
-               <td width="15%"><% out.print(rs.getString("mgr_name")); %></td>
-               <td width="23%"><% out.print(rs.getString("mgr_email_id")); %></td>
+             <td width="5%"><% out.print(rs.getString("venue_id")); %></td>
+               <td width="17%"><a href= <% out.print(rs.getString("web_address"));%>><% out.print(rs.getString("web_address")); %></a></td>
+               <td width="10%"><% out.print(rs.getString("address")); %></td>
+               <td width="8%"><% out.print(rs.getString("capacity")); %></td>
+               <td width="10%"><% out.print(rs.getString("mgr_name")); %></td>
+               <td width="20%"><% out.print(rs.getString("mgr_email_id")); %></td>
                <td width="10%"><% out.print(rs.getString("cost")); %></td>
                <td width="15%"><% out.print(rs.getString("contact_no")); %></td>
                               
@@ -197,7 +205,6 @@ while(rs.next())
    
    <% 
 }
-
 }
 %>
 
@@ -212,13 +219,13 @@ while(rs.next())
 
 
 
-
     }
 %>
 
 <div class="btn-group btn-group-justified" align ="center">
-    <a href="photographer.jsp?id=ph_id" class="btn btn-primary btn-lg">Back</a>
-    <a href="performer.jsp?id=ph_id" class="btn btn-primary btn-lg">Skip & Next</a>
+
+    <a href="caterer.jsp" class="btn btn-primary btn-lg">Back</a>
+    <a href="ve_update_default.jsp" class="btn btn-primary btn-lg">Next</a>
   </div>
   
 <br>
