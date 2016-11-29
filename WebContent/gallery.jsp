@@ -52,8 +52,8 @@
                 <div class="span12">
 
                     <div id="divLogo" class="pull-left">
-                        <a href="index.html" id="divSiteTitle">Forever</a><br />
-                        <a href="index.html" id="divTagLine">Your Wedding, Your Way!</a>
+                        <a href="index.jsp" id="divSiteTitle">Forever</a><br />
+                        <a href="index.jsp" id="divTagLine">Your Wedding, Your Way!</a>
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
@@ -86,41 +86,39 @@
             <ul class="thumbnails">
               <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/g1-display.jpg"><img src="gallery/g1.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder" /></a>
+                  <a href="scripts/gallery/g13.jpg"><img src="scripts/gallery/g13.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder" /></a>
                   <div class="caption">
-                    <h3>November 15, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>Picture Perfect</h3>
+                    <p>The happy family pictures by our very own photographer</p>
                   </div>
                 </div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/g2.jpg"><img src="gallery/g2.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g2.jpg"><img src="scripts/gallery/g2.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>November 7, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>Photoshoot</h3>
+                    <p>Bride's photoshoot is one of the components in marriage preparation</p>
+                    
                   </div>
                 </div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/preview-300.png"><img src="gallery/300x200.png" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g3.jpg"><img src="scripts/gallery/g3.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>November 7, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>You and Me</h3>
+                    <p>It is for you and your partner and for the longest time of memory</p>
                   </div>
                 </div>
               </li>
 			  <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/preview-300.png"><img src="gallery/300x200.png" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g4.jpg"><img src="scripts/gallery/g4.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>October 30, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>Carry Me</h3>
+                    <p>Every second is a memory to be reflect back in the future</p>
+                    
                   </div>
                 </div>
               </li>
@@ -130,41 +128,41 @@
             <ul class="thumbnails">
               <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/preview-300.png"><img src="gallery/300x200.png" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g5.jpg"><img src="scripts/gallery/g5.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>October 30, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>Kiss</h3>
+                    <p>From today on, it is gonna be two human beings as one body calls family</p>
+                    
                   </div>
                 </div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/preview-300.png"><img src="gallery/300x200.png" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g6.jpg"><img src="scripts/gallery/g6.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>October 10, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>Venue</h3>
+                    <p>Venue will determine the theme and everything else within a wedding</p>
+                    
                   </div>
                 </div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/preview-300.png"><img src="gallery/300x200.png" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g7.jpg"><img src="scripts/gallery/g7.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>October 1, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>Aisle Walk</h3>
+                    <p>The moment of father and daughter is not to be missed</p>
+                    
                   </div>
                 </div>
               </li>
 			  <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/preview-300.png"><img src="gallery/300x200.png" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g8.jpg"><img src="scripts/gallery/g8.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>September 27, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>I Love You</h3>
+                    <p>The day of two human beings to be one should be flawless</p>
+                    
                   </div>
                 </div>
               </li>
@@ -174,41 +172,40 @@
             <ul class="thumbnails">
               <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/preview-300.png"><img src="gallery/300x200.png" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g9.jpg"><img src="scripts/gallery/g9.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>September 26, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>Bouquet</h3>
+                    <p>Who will be the next bride in the line of the ladies? Catch the bouquet</p>
+                    
                   </div>
                 </div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/preview-300.png"><img src="gallery/300x200.png" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g10.jpg"><img src="scripts/gallery/g10.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>September 5, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>Showers</h3>
+                    <p>To many more journey of ups and downs with you by my side</p>
+                    
                   </div>
                 </div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/preview-300.png"><img src="gallery/300x200.png" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g11.jpg"><img src="scripts/gallery/g11.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>September 1, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>Serenity</h3>
+                    <p>Choosing a place can be a headache but with this kind of location...</p>
+                    
                   </div>
                 </div>
               </li>
 			  <li class="span3">
                 <div class="thumbnail">
-                  <a href="gallery/preview-300.png"><img src="gallery/300x200.png" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
+                  <a href="scripts/gallery/g12.jpg"><img src="scripts/gallery/g12.jpg" alt="Thumbnail Placeholder" title="Thumbnail Placeholder"/></a>
                   <div class="caption">
-                    <h3>August 24, 2016</h3>
-                    <p>Not sure how to display the picture yet....</p>
-                    <p><a href="#" class="btn btn-primary">Read More...</a></p>
+                    <h3>Be My Forever</h3>
+                    <p>I promise to be by yourside forever despite all the ups and downs</p>
                   </div>
                 </div>
               </li>

@@ -1,6 +1,18 @@
 <%@ page import="java.sql.*" %> 
 <%@ page import="java.io.*" %> 
+<<<<<<< Updated upstream
 <%@ page import="takeone.*" %>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<%@ page import="layout.*" %>
+=======
+<%@ page import="takeone.*" %>
+>>>>>>> origin/master
+=======
+<%@ page import="takeone.*" %>
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -114,9 +126,9 @@ String uname = request.getParameter("user_name");
                            
 		<hr class="colorgraph">
 		<div class="row">
-			 <div class="col-xs-12 col-sm-6 col-md-6"> <div class="form-group"><input type="submit" name="register" value="Sign in" class="btn btn-primary btn-block"  tabindex="3"></div>
+			 <div class="col-xs-12 col-sm-6 col-md-6" align="center"> <div class="form-group"><input type="submit" name="register" value="Sign in" class="btn btn-primary btn-medium"  tabindex="3"></div>
              </div>
-             <div class="col-xs-12 col-sm-6 col-md-6"><div class="form-group"><input name="register" value="New User" class="btn btn-primary btn-block" onclick="document.location.href='reg.jsp';" tabindex="4"></div>
+             <div class="col-xs-12 col-sm-6 col-md-6" align="center"><div class="form-group"><input name="register" value="New User" class="btn btn-primary btn-medium" onclick="document.location.href='reg.jsp';" tabindex="4"></div>
              </div>
          </div>
                         

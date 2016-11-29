@@ -84,7 +84,19 @@
    			
    		else {
    				
+<<<<<<< Updated upstream
    				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+   				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Wedding_Planner?useSSL=false","root","passwordbaru");
+=======
+   				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
+>>>>>>> origin/master
+=======
+   				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 				Statement st = con.createStatement();
 				ResultSet rs;
 				

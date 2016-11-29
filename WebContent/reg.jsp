@@ -1,6 +1,18 @@
 <%@ page import="java.sql.*" %> 
 <%@ page import="java.io.*" %>
+<<<<<<< Updated upstream
 <%@ page import="takeone.*" %>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<%@ page import="layout.*" %>
+=======
+<%@ page import="takeone.*" %>
+>>>>>>> origin/master
+=======
+<%@ page import="takeone.*" %>
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -138,11 +150,10 @@
                 <div class="row">
                 
                 
-                <div class="col-xs-6 col-sm-6 col-md-6"> <div class="form-group"><input type="submit" name="register" value="Create User" class="btn btn-primary btn-block" tabindex="9"></div>
+                <div class="col-xs-6 col-sm-6 col-md-6"> <div class="form-group"><input type="submit" name="register" value="Create User" class="btn btn-primary btn-medium" tabindex="9"></div>
                 </div>
                   
-                  	<div class="col-xs-12 col-sm-6 col-md-6"><div class="form-group"><input name="register" value="Sign in" class="btn btn-primary btn-block" onclick="document.location.href='log.jsp';" tabindex="10"></div>
-                    </div>
+                  	
                 </div>                              
    
    

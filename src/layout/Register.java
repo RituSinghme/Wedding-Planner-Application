@@ -59,7 +59,19 @@ public class Register extends HttpServlet{
 				Class.forName("com.mysql.jdbc.Driver");
 
 				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Wedding_Planner?useSSL=false",
+<<<<<<< Updated upstream
 						"root", "anu123");
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+						"root", "passwordbaru");
+=======
+						"root", "anu123");
+>>>>>>> origin/master
+=======
+						"root", "anu123");
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 				
 				String query0 = ("select * from customer where email = '" + email +"'");
 				pstatement = connection.prepareStatement(query0);

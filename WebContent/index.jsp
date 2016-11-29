@@ -52,8 +52,8 @@
                 <div class="span12">
 
                     <div id="divLogo" class="pull-left">
-                        <a href="index.html" id="divSiteTitle">Forever</a><br />
-                        <a href="index.html" id="divTagLine">Your Wedding, Your Way!</a>
+                        <a href="index.jsp" id="divSiteTitle">Forever</a><br />
+                        <a href="index.jsp" id="divTagLine">Your Wedding, Your Way!</a>
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
@@ -83,8 +83,8 @@
 
                 <div class="camera_full_width">
                     <div id="camera_wrap">
-                        <div data-src="slider-images/3.jpg" ><div class="camera_caption fadeFromBottom cap1">A Once In A Lifetime Memory</div></div>
-						<div data-src="slider-images/1.jpg" ><div class="camera_caption fadeFromBottom cap2">That You Want It To Be Perfect</div></div>
+                        <div data-src="slider-images/two.jpg" ><div class="camera_caption fadeFromBottom cap1">A Once In A Lifetime Memory</div></div>
+						<div data-src="slider-images/hands.jpg" ><div class="camera_caption fadeFromBottom cap2">That You Want It To Be Perfect</div></div>
 						<div data-src="slider-images/2.jpg" ><div class="camera_caption fadeFromBottom cap2">...and Flawless</div></div>
                     </div>
                     <br style="clear:both"/><div style="margin-bottom:40px"></div>
