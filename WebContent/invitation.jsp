@@ -1,5 +1,8 @@
 <%@ page import="java.sql.*" %> 
-<%@ page import="java.io.*" %> 
+<%@ page import="java.io.*" %>
+<%@ page import= "javax.servlet.http.*"%> 
+<%@ page import= "java.sql.DriverManager"  %> 
+<%@ page import= "javax.servlet.http.HttpSession" %> 
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -66,10 +69,10 @@
                         <ul class="nav nav-pills ddmenu">
                         <a style="color:dodgerblue"><font size="2">Invite Through Social Media: </font></a>
                         <br>
-                        <a href="www.facebook.com"><i class="social foundicon-facebook"></i> Facebook</a>
-						<a href="www.twitter.com"><i class="social foundicon-twitter"></i> Twitter</a>
-						<a href="www.pinterest.com"><i class="social foundicon-pinterest"></i> Pinterest</a>
-						<a href="www.instagram.com"><i class="social foundicon-instagram"></i> Instagram</a>
+                        <a href="www.facebook.com"><i class="social foundicon-facebook"></i>Â Facebook</a>
+						<a href="www.twitter.com"><i class="social foundicon-twitter"></i>Â Twitter</a>
+						<a href="www.pinterest.com"><i class="social foundicon-pinterest"></i>Â Pinterest</a>
+						<a href="www.instagram.com"><i class="social foundicon-instagram"></i>Â Instagram</a>
 						
 						</ul>
                     	</div>
@@ -81,14 +84,16 @@
             </div>    
 </div>   
             <%
+            
+String w_id = request.getParameter("w_id");
 Connection connection = null;
 ResultSet rst = null;
 Statement statement = null;
 Class.forName("com.mysql.jdbc.Driver");
 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "passwordbaru");
        try {
-String queryString = "SELECT groom_name, bride_name, w_date, address FROM wedding_planner.customer, wedding_planner.venue";	     
-	statement = connection.createStatement();
+String queryString = "SELECT groom_name, bride_name, w_date, address FROM customer, venue as V, wedding_component as W where V.venue_id = W.venue_id and c_id = "+  (Integer)session.getAttribute("customer_id") +" and W.w_id="+ w_id;	     
+statement = connection.createStatement();
 
 rst = statement.executeQuery(queryString);
 while(rst.next()) { %>
