@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <META HTTP-EQUIV="Refresh" CONTENT="60">
+    
     <title>Wedding Planning Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -54,8 +54,8 @@
                 <div class="span12">
 
                     <div id="divLogo" class="pull-left">
-                        <a href="index.jsp" id="divSiteTitle">Forever</a><br />
-                        <a href="index.jsp" id="divTagLine">Your Wedding, Your Way!</a>
+                        <a href="index.html" id="divSiteTitle">Forever</a><br />
+                        <a href="index.html" id="divTagLine">Your Wedding, Your Way!</a>
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
@@ -88,9 +88,7 @@
    		else {
    				
    			Class.forName("com.mysql.jdbc.Driver");
-
-   			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "passwordbaru");
-
+   			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
 			Statement st = con.createStatement();
 			Statement st2 = con.createStatement();
 			ResultSet rs,ts;
@@ -109,15 +107,13 @@
 						<h2 align="center">Invite your Family and Friends</h2>
 						<h2 align="center">
 						<div class="row">
-
-		                	<div class="col-xs-4 col-sm-4 col-md-4"><div class="form-group"><input type="submit" name="ADD" value="ADD" class="btn btn-primary btn-medium" onclick =
-
+		                	<div class="col-xs-4 col-sm-4 col-md-4"><div class="form-group"><input type="submit" name="ADD" value="ADD" class="btn btn-primary btn-block" onclick =
 		                        	<%
-		                        	
-		        					guest g = new guest();
+		                        
+		        					guest g = new guest(); 
 		        					Boolean status = false;
 		        					status = g.filldetails(request);   
-		        					out.print(status); 
+		        					if (status){response.sendRedirect("guest.jsp");} 
 		        					%>                   	
 		                        		></div>
 		                    </div>
@@ -233,7 +229,6 @@
                 <div class="span12">
                     <p class="copyright">
                         Copyright © 2016 Forever. All Rights Reserved.
-
                     </p>
                 </div>
             </div>
@@ -255,4 +250,3 @@
 
 </body>
 </html>
-
