@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    
+    <META HTTP-EQUIV="Refresh" CONTENT="60">
     <title>Wedding Planning Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -54,8 +54,8 @@
                 <div class="span12">
 
                     <div id="divLogo" class="pull-left">
-                        <a href="index.html" id="divSiteTitle">Forever</a><br />
-                        <a href="index.html" id="divTagLine">Your Wedding, Your Way!</a>
+                        <a href="index.jsp" id="divSiteTitle">Forever</a><br />
+                        <a href="index.jsp" id="divTagLine">Your Wedding, Your Way!</a>
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
@@ -75,7 +75,7 @@
                 </div>
             </div>
 
-            <h2 align="center">Hi There , Welcome !!</h2>
+            <h2 align="center">Wedding Won't Be Complete Without The Guests</h2>
             
             <%
    			if ((session.getAttribute("customer_id") == null) || (session.getAttribute("customer_id") == "")) {
@@ -88,10 +88,13 @@
    		else {
    				
    			Class.forName("com.mysql.jdbc.Driver");
-   			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
+
+   			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "passwordbaru");
+
 			Statement st = con.createStatement();
 			Statement st2 = con.createStatement();
-			ResultSet rs,ts;
+			Statement st3 = con.createStatement();
+			ResultSet rs,ts, rt;
 			int total=0;
 			rs = st.executeQuery("select * from guest where w_id =" + (Integer)session.getAttribute("wedding_id"));
 			ts = st2.executeQuery("select sum(total_count) as 'Total' from guest where w_id =" + (Integer)session.getAttribute("wedding_id"));
@@ -104,11 +107,48 @@
 				<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 					<form action ="">	
 						<br>
+						<h2 align="center"><a href="invitation.jsp?w_id= <%=(Integer)session.getAttribute("wedding_id") %>">Check Out Your Personalized Invitation</a></h2>
+						 
+						 <%
+						 	
+						 	//rt = st3.executeQuery("select c_id from customer where w_id =" + (Integer)session.getAttribute("wedding_id"));
+						 	String web_url = "http://localhost:8080/takeone/invitation.jsp?w_id=" + (Integer)session.getAttribute("wedding_id");    
+						  
+						   	
+						   	Connection connection = null;
+						    PreparedStatement pstatement = null;
+						    Class.forName("com.mysql.jdbc.Driver");
+						    
+						    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "passwordbaru");
+
+						    
+						         int updateQuery = 0;
+							         try {
+						             String queryString = "insert into website(web_url, theme) values ('"+web_url+"', 'simple')";
+						             pstatement = connection.prepareStatement(queryString);
+						             updateQuery = pstatement.executeUpdate();
+						         
+							         }
+
+						            catch (Exception ex) {
+						            System.out.println("Unable to connect to database.");
+						   
+						               }
+							         
+							         finally {
+							                // close all the connections.
+							                
+							                connection.close();
+							            }
+						 %>
+						
 						<h2 align="center">Invite your Family and Friends</h2>
 						<h2 align="center">
 						<div class="row">
-		                	<div class="col-xs-4 col-sm-4 col-md-4"><div class="form-group"><input type="submit" name="ADD" value="ADD" class="btn btn-primary btn-block" onclick =
-		                        	<%
+
+		                	<div class="col-xs-4 col-sm-4 col-md-4"><div class="form-group"><input type="submit" name="ADD" value="ADD" class="btn btn-primary btn-medium" onclick =
+
+									<%
 		                        
 		        					guest g = new guest(); 
 		        					Boolean status = false;
@@ -228,7 +268,8 @@
             <div class="row-fluid">
                 <div class="span12">
                     <p class="copyright">
-                        Copyright © 2016 Forever. All Rights Reserved.
+                        Copyright Â© 2016 Forever. All Rights Reserved.
+
                     </p>
                 </div>
             </div>
@@ -250,3 +291,4 @@
 
 </body>
 </html>
+
