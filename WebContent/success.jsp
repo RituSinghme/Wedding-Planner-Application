@@ -52,8 +52,8 @@
                 <div class="span12">
 
                     <div id="divLogo" class="pull-left">
-                        <a href="index.jsp" id="divSiteTitle">Forever</a><br />
-                        <a href="index.jsp" id="divTagLine">Your Wedding, Your Way!</a>
+                        <a href="index.html" id="divSiteTitle">Forever</a><br />
+                        <a href="index.html" id="divTagLine">Your Wedding, Your Way!</a>
                     </div>
 
                     <div id="divMenuRight" class="pull-right">
@@ -84,9 +84,7 @@
    			
    		else {
    				
-
-   				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Wedding_Planner?useSSL=false","root","passwordbaru");
-
+   				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/wedding_planner","root", "Chetu1234");
 				Statement st = con.createStatement();
 				ResultSet rs;
 				
